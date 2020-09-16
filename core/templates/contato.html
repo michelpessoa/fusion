@@ -2,17 +2,18 @@
 <section class="section-padding bg-gray" id="contact">
     <div class="container">
         <div class="section-header text-center">
-            <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Countact Us</h2>
+            <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Nós Contate</h2>
             <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
         </div>
         <div class="row contact-form-area wow fadeInUp" data-wow-delay="0.3s">
             <div class="col-lg-7 col-md-12 col-sm-12">
                 <div class="contact-block">
-                    <form id="contactForm">
+                    <form id="contato" method="post" action="{% url 'index' %}">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input class="form-control" data-error="Please enter your name" id="name" name="name" placeholder="Name"
+                                    <input class="form-control" data-error="Please enter your name" id="nome" name="nome" placeholder="Nome"
                                            required type="text">
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -26,19 +27,19 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input class="form-control" data-error="Please enter your subject" id="msg_subject" placeholder="Subject"
+                                    <input class="form-control" data-error="Please enter your subject" id="assunto" name="assunto" placeholder="Assunto"
                                            required type="text">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea class="form-control" data-error="Write your message" id="message" placeholder="Your Message"
+                                    <textarea class="form-control" data-error="Write your message" id="mensagem" name="mensagem" placeholder="Sua Mensagem"
                                               required rows="7"></textarea>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="submit-button text-left">
-                                    <button class="btn btn-common" id="form-submit" type="submit">Send Message</button>
+                                    <button class="btn btn-common" id="form-submit" type="submit">Enviar e-mail</button>
                                     <div class="h3 text-center hidden" id="msgSubmit"></div>
                                     <div class="clearfix"></div>
                                 </div>
