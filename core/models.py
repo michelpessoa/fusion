@@ -3,10 +3,24 @@ from django.db import models
 
 from stdimage.models import StdImageField
 
+
 def get_file_path(_instance, filename):
     ext = filename.split('.')[-1]
     filename = f'{uuid.uuid4()}.{ext}'
     return filename
+
+
+ICONE_CHOICES = (
+    ('lni-cog', 'Engrenagem'),
+    ('lni-stats-up', 'Gráfico'),
+    ('lni-users', 'Usuários'),
+    ('lni-layers', 'Design'),
+    ('lni-mobile', 'Mobile'),
+    ('lni-rocket', 'Foguete'),
+    ('lni-laptop-phone', 'Telefone Laptop'),
+    ('lni-leaf', 'Folha'),
+    ('lni-layers', 'Layers'),
+)
 
 
 class Base(models.Model):
@@ -19,17 +33,9 @@ class Base(models.Model):
 
 
 class Servico(Base):
-    ICONE_CHOICES = (
-        ('lni-cog', 'Engrenagem'),
-        ('lni-stats-up', 'Gráfico'),
-        ('lni-users', 'Usuários'),
-        ('lni-layers', 'Design'),
-        ('lni-mobile', 'Mobile'),
-        ('lni-rocket', 'Foguete'),
-    )
     servico = models.CharField('Servio', max_length=100)
     descricao = models.TextField('Descrição', max_length=200)
-    icone = models.CharField('Icone', max_length=12, choices=ICONE_CHOICES)
+    icone = models.CharField('Icone', max_length=16, choices=ICONE_CHOICES)
 
     class Meta:
         verbose_name = 'Serviço'
@@ -66,3 +72,16 @@ class Funcionario(Base):
 
     def __str__(self):
         return self.nome
+
+
+class Recurso(Base):
+    recurso = models.CharField('Recurso', max_length=100)
+    descricao = models.TextField('Descrição', max_length=200)
+    icone = models.CharField('Icone', max_length=16, choices=ICONE_CHOICES)
+
+    class Meta:
+        verbose_name = 'Recurso'
+        verbose_name_plural = 'Recursos'
+
+    def __str__(self):
+        return self.recurso
