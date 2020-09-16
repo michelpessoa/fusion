@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+import dj_database_url # Necessário ao Heroku
 
 from pathlib import Path
 
@@ -75,6 +76,7 @@ WSGI_APPLICATION = 'fusion.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -85,19 +87,10 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-""""
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fusion',
-        'USER': 'postgres',
-        'PASSWORD': 'fusion',
-        'HOST': 'localhost',
-        'PORT' '5432'
-    }
-}
 """
-
+DATABASES = {
+    'default': dj_database_url.config()
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -144,7 +137,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configurações de e-mail
 # Email teste console
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 """
 #  Configurações para email em produção 
@@ -155,3 +148,5 @@ EMAIL_PORT = 587
 EMAIL_USER_TLS = True
 EMAIL_HOST_PASSWORD = 'sua senha'
 """
+
+LOGOUT_REDIRECT_URL = 'index'
