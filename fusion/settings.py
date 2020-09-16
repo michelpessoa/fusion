@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'qdd%j0=fl((21&o9a(xk-o$vpi*iq2_+m97ykx6_mmh^6k7_u5' #gitignore
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
